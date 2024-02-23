@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Micar';
+  src: url('./assets/fonts/Mikar.ttf');
+}
+
+body {
+  margin: 0;
+  font-family: Micar;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+

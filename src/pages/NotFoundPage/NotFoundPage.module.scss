@@ -1,0 +1,11 @@
+.nfpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(6, 16, 28, 1);
+    color: white;
+    font-size: 4rem;
+}
