@@ -1,0 +1,31 @@
+.calculator__body {
+    display: flex;
+    flex-direction: column;
+
+    &__calculator {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 450px;
+        height: fit-content;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+
+        &__text {
+            color: white;
+            font-size: 2rem;
+        }
+
+        &__result {
+            text-align: right;
+            color: white;
+            font-size: 4.8rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+
+
+

@@ -2,10 +2,10 @@ import { createBrowserRouter } from 'react-router-dom'
 import React from 'react'
 import WelcomePage from '../pages/WelcomePage'
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage'
-import Calculator from '../pages/Calculator'
 import Notes from '../pages/Notes'
 import App from '../App'
 import Weather from '../pages/Weather'
+import CalculatorPage from '../pages/CalculatorPage/CalculatorPage'
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/calculator',
-                element: <Calculator />,
+                element: <CalculatorPage />,
             },
             {
                 path: '/notes',

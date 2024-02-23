@@ -1,0 +1,27 @@
+$size: 5.5rem;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    height: $size;
+    width: $size;
+    border: none;
+    background-color: rgba(23, 36, 55, 0.4);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(108, 99, 255, 1);
+        transition: background-color 0.7s;
+    }
+
+    &--calc-btn {
+        background-color: rgba(50, 65, 86, 1);
+
+        &--big {
+            background-color: rgba(50, 65, 86, 1);
+            width: $size * 2 + 2rem;
+        }
+    }
+}

@@ -1,9 +1,53 @@
+import { Link, NavLink } from 'react-router-dom'
+import { key } from 'localforage'
 import classes from './CustomNavbar.module.scss'
+import CustomButton from '../ui/CustomButton/CustomButton'
+import calculator from '../../assets/icons/calculator.png'
+import notes from '../../assets/icons/wirte.png'
+import weather from '../../assets/icons/cloudy.png'
 
 const CustomNavbar = () => {
+    const images = [
+        {
+            name: 'calculator',
+            value: calculator,
+        },
+        {
+            name: 'notes',
+            value: notes,
+        },
+        {
+            name: 'weather',
+            value: weather,
+        },
+    ]
+
+    const buttons = images.map((image) => (
+        <NavLink
+            key={image.name}
+            to={`/${image.name}`}
+        >
+            <CustomButton>
+                <img
+                    src={image.value}
+                    alt={image.name}
+                    className={classes.navbar__buttons__image}
+                />
+            </CustomButton>
+        </NavLink>
+    ))
+
     return (
         <div className={classes.navbar}>
-            <h1>Tool Box</h1>
+            <Link
+                to='/'
+                className={classes.navbar__link}
+            >
+                Tool Box
+            </Link>
+            <div className={classes.navbar__buttons}>
+                {buttons}
+            </div>
         </div>
     )
 }

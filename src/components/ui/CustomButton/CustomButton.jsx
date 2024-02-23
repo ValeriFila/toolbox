@@ -1,13 +1,15 @@
 import React from 'react'
-import classes from './CustomButton.module.scss'
+import clsx from 'clsx'
+import './CustomButton.scss'
 
-const CustomButton = () => {
+const CustomButton = ({ children, theme, onClick }) => {
     return (
         <button
             type='button'
-            className={classes.customButton}
+            className={clsx('button', theme && `button--${theme}`)}
+            onClick={onClick}
         >
-            нажать
+            {children}
         </button>
     )
 }
