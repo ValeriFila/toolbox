@@ -1,0 +1,23 @@
+.input {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+
+    &__result {
+        text-align: right;
+        color: #ffffff;
+        font-size: 3rem;
+    }
+
+    &__clear {
+        width: 3rem;
+        cursor: pointer;
+    }
+
+    &__button {
+        background-color: transparent;
+        border: none;
+    }
+}

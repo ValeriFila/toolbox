@@ -1,4 +1,13 @@
-function displayResult(button, operatorPressed, setResult, setCount, setOperatorPressed, setIsFirstOperator, setEqualPressed, setLastOperator) {
+function displayResult(
+    button, 
+    operatorPressed, 
+    setResult, 
+    setCount, 
+    setOperatorPressed, 
+    setIsFirstOperator, 
+    setEqualPressed, 
+    setLastOperator,
+) {
     setResult((prev) => {
         if (prev.toString().includes('.') && button === '.') {
             return prev.toString()
@@ -9,26 +18,19 @@ function displayResult(button, operatorPressed, setResult, setCount, setOperator
 
             if ((prev === '0' || prev === '-0') && button === '0') return prev.toString()
 
-            if ((prev === '0' || prev === '-0') && button === '.') return `${prev}.`
+            if ((prev === '0' || prev === '-0') && button === '.') return `${prev.toString()}.`
 
             if (prev === '0') return button
 
             if (prev === '-0') return `-${button}`
 
-            if (operatorPressed) {
-                return button.toString()
-            }
-            return (prev + button).toString()
+            if (operatorPressed) return button.toString()
+
+            return prev.toString() + button
         }
 
         if (button === 'AC') {
             setCount(0)
-            // setOperator({
-            //     operatorPressed: false,
-            //     isFirstOperator: false,
-            //     equalPressed: false,
-            //     lastOperator: '',
-            // })
             setOperatorPressed(false)
             setIsFirstOperator(false)
             setEqualPressed(false)

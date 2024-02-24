@@ -3,7 +3,8 @@ import CustomButton from '../ui/CustomButton/CustomButton'
 import classes from './Calculator.module.scss'
 import displayResult from '../../utils/displayResult'
 import countNums from '../../utils/countNums'
-import next from '../../assets/icons/next.png'
+import CalculatorInput from '../CalculatorInput/CalculatorInput'
+import clearField from '../../utils/clearField'
 
 const buttons = [
     'AC',
@@ -34,72 +35,62 @@ const Calculator = () => {
     const [isFirstOperator, setIsFirstOperator] = useState(false)
     const [equalPressed, setEqualPressed] = useState(false)
     const [lastOperator, setLastOperator] = useState('')
-    
-    // const [operator, setOperator] = useState({
-    //     operatorPressed: false,
-    //     isFirstOperator: false,
-    //     equalPressed: false,
-    //     lastOperator: '',
-    // })
 
     const numberClick = useCallback((button) => {
-        // console.log(operator)
         if (button === '-' || button === '+' || button === '/' || button === 'x') {
             setLastOperator(button)
-            // setOperator({ ...operator, lastOperator: button })
             if (!isFirstOperator) {
                 setCount(Number(result))
-                // setOperator({ ...operator, isFirstOperator: true })
                 setIsFirstOperator(true)
             } else if (!operatorPressed) {
                 if (equalPressed) {
                     setEqualPressed(false)
-                    // setOperator({ ...operator, equalPressed: false })
                 } else {
                     setCount((prev) => {
                         return Number(countNums(lastOperator, prev, result))
                     })
-                    // setOperator({ ...operator, equalPressed: false })
                     setEqualPressed(false)
                 }
             }
-            // setOperator({ ...operator, operatorPressed: true })
             setOperatorPressed(true)
         } else if (button === '=') {
             setCount((prev) => {
                 return Number(countNums(lastOperator, prev, result))
             })
-            // setOperator({ ...operator, operatorPressed: false, equalPressed: true })
             setEqualPressed(true)
             setOperatorPressed(false)
         } else if (!operatorPressed) {
-            displayResult(button, false, setResult, setCount, setOperatorPressed, setIsFirstOperator, setEqualPressed, setLastOperator)
+            displayResult(
+                button, 
+                false, 
+                setResult, 
+                setCount, 
+                setOperatorPressed, 
+                setIsFirstOperator, 
+                setEqualPressed, 
+                setLastOperator,
+            )
         } else {
-            displayResult(button, true, setResult, setCount, setOperatorPressed, setIsFirstOperator, setEqualPressed, setLastOperator)
-            // setOperator({ ...operator, operatorPressed: false })
+            displayResult(
+                button, 
+                true, 
+                setResult, 
+                setCount, 
+                setOperatorPressed, 
+                setIsFirstOperator, 
+                setEqualPressed, 
+                setLastOperator,
+            )
             setOperatorPressed(false)
         }
     }, [equalPressed, isFirstOperator, lastOperator, operatorPressed, result])
 
-    const clearField = () => {
-        console.log('clear')
-    }
-
     return (
         <div className={classes.calculator__body}>
-            <div className={classes.calculator__body__calculator__input}>
-                <img
-                    src={next}
-                    className={classes.calculator__body__calculator__input__clear}
-                    alt='clear'
-                    onClick={() => clearField}
-                />
-                <p
-                    className={classes.calculator__body__calculator__input__result}
-                >
-                    {+result}
-                </p>
-            </div>
+            <CalculatorInput
+                result={result}
+                onClick={() => clearField(result, setResult())}
+            />
             <div className={classes.calculator__body__calculator}>
                 {buttons.map((button) => (
                     <CustomButton
@@ -118,7 +109,11 @@ const Calculator = () => {
                     {count.toExponential(3)}
                 </p>
             ) : (
-                <p className={classes.calculator__body__calculator__count}>{count}</p>
+                <p
+                    className={classes.calculator__body__calculator__count}
+                >
+                    {count}
+                </p>
             )}
         </div>
     )
