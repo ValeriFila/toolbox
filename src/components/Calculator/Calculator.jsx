@@ -3,6 +3,7 @@ import CustomButton from '../ui/CustomButton/CustomButton'
 import classes from './Calculator.module.scss'
 import displayResult from '../../utils/displayResult'
 import countNums from '../../utils/countNums'
+import next from '../../assets/icons/next.png'
 
 const buttons = [
     'AC',
@@ -70,6 +71,7 @@ const Calculator = () => {
             })
             // setOperator({ ...operator, operatorPressed: false, equalPressed: true })
             setEqualPressed(true)
+            setOperatorPressed(false)
         } else if (!operatorPressed) {
             displayResult(button, false, setResult, setCount, setOperatorPressed, setIsFirstOperator, setEqualPressed, setLastOperator)
         } else {
@@ -79,14 +81,25 @@ const Calculator = () => {
         }
     }, [equalPressed, isFirstOperator, lastOperator, operatorPressed, result])
 
+    const clearField = () => {
+        console.log('clear')
+    }
+
     return (
         <div className={classes.calculator__body}>
-            <p
-                className={classes.calculator__body__calculator__result}
-                style={{ fontSize: result.toString().length > 10 ? '3.5rem' : '4.8rem' }}
-            >
-                {result}
-            </p>
+            <div className={classes.calculator__body__calculator__input}>
+                <img
+                    src={next}
+                    className={classes.calculator__body__calculator__input__clear}
+                    alt='clear'
+                    onClick={() => clearField}
+                />
+                <p
+                    className={classes.calculator__body__calculator__input__result}
+                >
+                    {+result}
+                </p>
+            </div>
             <div className={classes.calculator__body__calculator}>
                 {buttons.map((button) => (
                     <CustomButton
@@ -98,8 +111,15 @@ const Calculator = () => {
                     </CustomButton>
                 ))}
             </div>
-
-            <p style={{ fontSize: '50px', marginTop: '30px', color: 'white' }}>{count}</p>
+            {count.toString().length > 9 ? (
+                <p
+                    className={classes.calculator__body__calculator__count}
+                >
+                    {count.toExponential(3)}
+                </p>
+            ) : (
+                <p className={classes.calculator__body__calculator__count}>{count}</p>
+            )}
         </div>
     )
 }

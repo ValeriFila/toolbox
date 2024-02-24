@@ -23,6 +23,12 @@ function displayResult(button, operatorPressed, setResult, setCount, setOperator
 
         if (button === 'AC') {
             setCount(0)
+            // setOperator({
+            //     operatorPressed: false,
+            //     isFirstOperator: false,
+            //     equalPressed: false,
+            //     lastOperator: '',
+            // })
             setOperatorPressed(false)
             setIsFirstOperator(false)
             setEqualPressed(false)
