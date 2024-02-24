@@ -1,4 +1,4 @@
-function displayResult(button, operatorPressed, setResult, setCount) {
+function displayResult(button, operatorPressed, setResult, setCount, setOperatorPressed, setIsFirstOperator, setEqualPressed, setLastOperator) {
     setResult((prev) => {
         if (prev.toString().includes('.') && button === '.') {
             return prev.toString()
@@ -23,6 +23,10 @@ function displayResult(button, operatorPressed, setResult, setCount) {
 
         if (button === 'AC') {
             setCount(0)
+            setOperatorPressed(false)
+            setIsFirstOperator(false)
+            setEqualPressed(false)
+            setLastOperator('')
             return '0'
         }
 
@@ -43,6 +47,7 @@ function displayResult(button, operatorPressed, setResult, setCount) {
             }
             return res
         }
+        return null
     })
 }
 
