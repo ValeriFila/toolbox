@@ -40,6 +40,14 @@ const Calculator = () => {
     const displayResult = useDisplayResult()
 
     const numberClick = useCallback((button) => {
+        const params = [
+            button,
+            setCount,
+            setOperatorPressed,
+            setIsFirstOperator,
+            setEqualPressed,
+            setLastOperator,
+        ]
         if (button === '-' || button === '+' || button === '/' || button === 'x') {
             setLastOperator(button)
             if (!isFirstOperator) {
@@ -63,30 +71,22 @@ const Calculator = () => {
             setEqualPressed(true)
             setOperatorPressed(false)
         } else if (!operatorPressed) {
-            const res = displayResult(
-                button,
-                false,
-                setCount,
-                setOperatorPressed,
-                setIsFirstOperator,
-                setEqualPressed,
-                setLastOperator,
-            )
+            const res = displayResult(...params, false)
             dispatch(setResult(res))
         } else {
-            const res = displayResult(
-                button,
-                true,
-                setCount,
-                setOperatorPressed,
-                setIsFirstOperator,
-                setEqualPressed,
-                setLastOperator,
-            )
+            const res = displayResult(...params, true)
             dispatch(setResult(res))
             setOperatorPressed(false)
         }
-    }, [countNums, dispatch, displayResult, equalPressed, isFirstOperator, lastOperator, operatorPressed, result])
+    }, [
+        countNums,
+        dispatch,
+        displayResult,
+        equalPressed,
+        isFirstOperator,
+        lastOperator,
+        operatorPressed,
+        result])
 
     return (
         <div className={classes.calculator__body}>

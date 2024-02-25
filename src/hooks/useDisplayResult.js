@@ -6,12 +6,12 @@ export const useDisplayResult = () => {
 
     return useCallback((
         button,
-        operatorPressed,
         setCount,
         setOperatorPressed,
         setIsFirstOperator,
         setEqualPressed,
         setLastOperator,
+        operatorPressed,
     ) => {
         if (prev.toString().includes('.') && button === '.') {
             return prev.toString()
