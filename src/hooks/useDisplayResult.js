@@ -1,20 +1,24 @@
-function displayResult(
-    button, 
-    operatorPressed, 
-    setResult, 
-    setCount, 
-    setOperatorPressed, 
-    setIsFirstOperator, 
-    setEqualPressed, 
-    setLastOperator,
-) {
-    setResult((prev) => {
+import { useSelector } from 'react-redux'
+import { useCallback } from 'react'
+
+export const useDisplayResult = () => {
+    const prev = useSelector((state) => state.result.result)
+
+    return useCallback((
+        button,
+        operatorPressed,
+        setCount,
+        setOperatorPressed,
+        setIsFirstOperator,
+        setEqualPressed,
+        setLastOperator,
+    ) => {
         if (prev.toString().includes('.') && button === '.') {
             return prev.toString()
         }
 
         if ((Number(button) >= '0' && Number(button) <= '9') || button === '.') {
-            if (prev.toString().length >= 10) return prev.toString()
+            if (prev.toString().length >= 9) return prev.toString()
 
             if ((prev === '0' || prev === '-0') && button === '0') return prev.toString()
 
@@ -56,7 +60,5 @@ function displayResult(
             return res
         }
         return null
-    })
+    }, [prev])
 }
-
-export default displayResult

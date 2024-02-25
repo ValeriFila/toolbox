@@ -1,5 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
+import resultReducer from './resultSlice'
 
-export const store = configureStore({
-    reducer: {},
+export default configureStore({
+    reducer: {
+        result: resultReducer,
+    },
 })

@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import CustomButton from '../ui/CustomButton/CustomButton'
 import classes from './Calculator.module.scss'
-import displayResult from '../../utils/displayResult'
-import countNums from '../../utils/countNums'
-import CalculatorInput from '../CalculatorInput/CalculatorInput'
-import clearField from '../../utils/clearField'
+import { useCountNums } from '../../hooks/useCountNums'
+import { useDisplayResult } from '../../hooks/useDisplayResult'
+import { setResult } from '../../store/resultSlice'
 
 const buttons = [
     'AC',
@@ -29,12 +29,15 @@ const buttons = [
 ]
 
 const Calculator = () => {
-    const [result, setResult] = useState('0')
+    const result = useSelector((state) => state.result.result)
+    const dispatch = useDispatch()
     const [count, setCount] = useState(0)
     const [operatorPressed, setOperatorPressed] = useState(false)
     const [isFirstOperator, setIsFirstOperator] = useState(false)
     const [equalPressed, setEqualPressed] = useState(false)
     const [lastOperator, setLastOperator] = useState('')
+    const countNums = useCountNums()
+    const displayResult = useDisplayResult()
 
     const numberClick = useCallback((button) => {
         if (button === '-' || button === '+' || button === '/' || button === 'x') {
@@ -47,7 +50,7 @@ const Calculator = () => {
                     setEqualPressed(false)
                 } else {
                     setCount((prev) => {
-                        return Number(countNums(lastOperator, prev, result))
+                        return Number(countNums(lastOperator, prev))
                     })
                     setEqualPressed(false)
                 }
@@ -55,42 +58,38 @@ const Calculator = () => {
             setOperatorPressed(true)
         } else if (button === '=') {
             setCount((prev) => {
-                return Number(countNums(lastOperator, prev, result))
+                return Number(countNums(lastOperator, prev))
             })
             setEqualPressed(true)
             setOperatorPressed(false)
         } else if (!operatorPressed) {
-            displayResult(
-                button, 
-                false, 
-                setResult, 
-                setCount, 
-                setOperatorPressed, 
-                setIsFirstOperator, 
-                setEqualPressed, 
+            const res = displayResult(
+                button,
+                false,
+                setCount,
+                setOperatorPressed,
+                setIsFirstOperator,
+                setEqualPressed,
                 setLastOperator,
             )
+            dispatch(setResult(res))
         } else {
-            displayResult(
-                button, 
-                true, 
-                setResult, 
-                setCount, 
-                setOperatorPressed, 
-                setIsFirstOperator, 
-                setEqualPressed, 
+            const res = displayResult(
+                button,
+                true,
+                setCount,
+                setOperatorPressed,
+                setIsFirstOperator,
+                setEqualPressed,
                 setLastOperator,
             )
+            dispatch(setResult(res))
             setOperatorPressed(false)
         }
-    }, [equalPressed, isFirstOperator, lastOperator, operatorPressed, result])
+    }, [countNums, dispatch, displayResult, equalPressed, isFirstOperator, lastOperator, operatorPressed, result])
 
     return (
         <div className={classes.calculator__body}>
-            <CalculatorInput
-                result={result}
-                onClick={() => clearField(result, setResult())}
-            />
             <div className={classes.calculator__body__calculator}>
                 {buttons.map((button) => (
                     <CustomButton
@@ -112,7 +111,7 @@ const Calculator = () => {
                 <p
                     className={classes.calculator__body__calculator__count}
                 >
-                    {count}
+                    {count.toString()}
                 </p>
             )}
         </div>

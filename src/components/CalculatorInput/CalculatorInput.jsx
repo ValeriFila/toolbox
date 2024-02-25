@@ -1,13 +1,18 @@
+import { useSelector } from 'react-redux'
 import next from '../../assets/icons/next.png'
 import classes from './CalculatorInput.module.scss'
+import { useClearField } from '../../hooks/useClearField'
 
-const CalculatorInput = ({ result, onClick }) => {
+const CalculatorInput = () => {
+    const result = useSelector((state) => state.result.result)
+    const clearField = useClearField()
+
     return (
         <div className={classes.input}>
             <button
                 type='button'
                 className={classes.input__button}
-                onClick={onClick}
+                onClick={() => clearField()}
             >
                 <img
                     src={next}
