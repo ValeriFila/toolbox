@@ -6,7 +6,7 @@ $size: 90px;
     justify-content: flex-start;
     align-items: center;
     background-color: rgba(6, 16, 28, 1);
-    width: 400px;
+    min-width: 400px;
     height: 100vh;
     padding: 5rem 1rem;
 
@@ -29,5 +29,6 @@ $size: 90px;
     &__link {
         color: white;
         font-size: 3rem;
+        font-weight: bold;
     }
 }
