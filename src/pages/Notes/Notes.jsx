@@ -27,12 +27,8 @@ const Notes = () => {
                 />
                 <Note
                     props={{
-                        textarea: '',
                         remaining: '198 символов',
-                        button: 'Создать',
-                    }}
-                    onChange={() => {
-                        console.log('change...')
+                        button: 'СОЗДАТЬ',
                     }}
                 />
 

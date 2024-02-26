@@ -1,6 +1,13 @@
+import { useState } from 'react'
 import classes from './Note.module.scss'
 
-const Note = ({ props, onChange }) => {
+const Note = ({ props, onClick }) => {
+    const [note, setNote] = useState('')
+
+    const handleChange = (e) => {
+        setNote(e.target.value)
+    }
+
     return (
         <div className={classes.note}>
             {props.note ? (
@@ -9,8 +16,8 @@ const Note = ({ props, onChange }) => {
                 <textarea
                     placeholder='Новая заметка...'
                     className={classes.note__text}
-                    value={props.textarea}
-                    onChange={onChange}
+                    value={note}
+                    onChange={(e) => handleChange(e)}
                 />
             )}
             <div className={classes.note__bottom}>
@@ -23,6 +30,7 @@ const Note = ({ props, onChange }) => {
                     <button
                         type='button'
                         className={classes.note__bottom__button}
+                        onClick={onClick}
                     >
                         {props.button}
                     </button>
@@ -30,8 +38,9 @@ const Note = ({ props, onChange }) => {
                     <button
                         type='button'
                         className={classes.note__bottom__button}
+                        onClick={onClick}
                     >
-                        удалить
+                        УДАЛИТЬ
                     </button>
                 )}
             </div>
