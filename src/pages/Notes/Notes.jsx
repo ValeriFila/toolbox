@@ -31,6 +31,9 @@ const Notes = () => {
                         remaining: '198 символов',
                         button: 'Создать',
                     }}
+                    onChange={() => {
+                        console.log('change...')
+                    }}
                 />
 
             </div>

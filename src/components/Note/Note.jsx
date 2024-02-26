@@ -1,6 +1,6 @@
 import classes from './Note.module.scss'
 
-const Note = ({ props }) => {
+const Note = ({ props, onChange }) => {
     return (
         <div className={classes.note}>
             {props.note ? (
@@ -9,9 +9,9 @@ const Note = ({ props }) => {
                 <textarea
                     placeholder='Новая заметка...'
                     className={classes.note__text}
-                >
-                    {props.textarea}
-                </textarea>
+                    value={props.textarea}
+                    onChange={onChange}
+                />
             )}
             <div className={classes.note__bottom}>
                 {props.date ? (
@@ -19,7 +19,6 @@ const Note = ({ props }) => {
                 ) : (
                     <p className={classes.note__bottom__date}>{props.remaining}</p>
                 )}
-
                 {props.button ? (
                     <button
                         type='button'
