@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Weather = () => {
+const WeatherPage = () => {
     return (
         <h1>Weather</h1>
     )
 }
 
-export default Weather
+export default WeatherPage

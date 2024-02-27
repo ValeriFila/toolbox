@@ -1,4 +1,4 @@
-.note {
+.create-note {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,7 +13,7 @@
     color: white;
     word-break: break-all;
 
-    &__text {
+    &__text-area {
         text-align: left;
         font-size: 1.4rem;
         background-color: transparent;
@@ -28,26 +28,13 @@
         }
     }
 
-    &__bottom {
+    &__bottom-part {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
-        &__date {
-            font-size: 1.2rem;
-        }
-
-        &__button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 2rem;
-            padding: 1rem;
-            border-radius: 3px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
+        &__remaining {
             font-size: 1.2rem;
         }
     }

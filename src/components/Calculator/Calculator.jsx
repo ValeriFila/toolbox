@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import CustomButton from '../ui/CustomButton/CustomButton'
+import SquareButton from '../../shared/ui/SquareButton/SquareButton'
 import classes from './Calculator.module.scss'
-import { useCountNums } from '../../hooks/useCountNums'
-import { useDisplayResult } from '../../hooks/useDisplayResult'
-import { setResult } from '../../store/resultSlice'
+import { useCountNums } from '../../entities/Calculator/lib/hooks/useCountNums'
+import { useDisplayResult } from '../../entities/Calculator/lib/hooks/useDisplayResult'
+import { setResult } from '../../app/store/resultSlice'
 
 const buttons = [
     'AC',
@@ -92,13 +92,13 @@ const Calculator = () => {
         <div className={classes.calculator__body}>
             <div className={classes.calculator__body__calculator}>
                 {buttons.map((button) => (
-                    <CustomButton
+                    <SquareButton
                         key={button}
                         theme={button === '0' ? 'calc-btn--big' : 'calc-btn'}
                         onClick={() => numberClick(button)}
                     >
                         <p className={classes.calculator__body__calculator__text}>{button}</p>
-                    </CustomButton>
+                    </SquareButton>
                 ))}
             </div>
             {count.toString().length > 9 ? (

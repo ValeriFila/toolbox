@@ -1,8 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
-import './CustomButton.scss'
+import './SquareButton.scss'
 
-const CustomButton = ({ children, theme, onClick }) => {
+const SquareButton = ({ children, theme, onClick }) => {
     return (
         <button
             type='button'
@@ -14,4 +14,4 @@ const CustomButton = ({ children, theme, onClick }) => {
     )
 }
 
-export default CustomButton
+export default SquareButton

@@ -1,7 +1,7 @@
 import React from 'react'
 import Calculator from '../../components/Calculator/Calculator'
 import classes from './CalculatorPage.module.scss'
-import CalculatorInput from '../../components/CalculatorInput/CalculatorInput'
+import CalculatorInput from '../../entities/Calculator/components/resultInput/CalculatorInput'
 
 const CalculatorPage = () => {
     return (

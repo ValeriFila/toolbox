@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
-import next from '../../assets/icons/next.png'
+import next from '../../../../assets/icons/next.png'
 import classes from './CalculatorInput.module.scss'
-import { useClearField } from '../../hooks/useClearField'
+import { useClearField } from '../../lib/hooks/useClearField'
 
 const CalculatorInput = () => {
     const result = useSelector((state) => state.result.result)
