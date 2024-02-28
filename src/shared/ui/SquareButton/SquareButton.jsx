@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import './SquareButton.scss'
 
-const SquareButton = ({ children, theme, onClick }) => {
+export const SquareButton = ({ children, theme, onClick }) => {
     return (
         <button
             type='button'
@@ -13,5 +13,3 @@ const SquareButton = ({ children, theme, onClick }) => {
         </button>
     )
 }
-
-export default SquareButton

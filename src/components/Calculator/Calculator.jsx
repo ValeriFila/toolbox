@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import SquareButton from '../../shared/ui/SquareButton/SquareButton'
+import { SquareButton } from '../../shared/ui'
 import classes from './Calculator.module.scss'
 import { useCountNums } from '../../entities/Calculator/lib/hooks/useCountNums'
 import { useDisplayResult } from '../../entities/Calculator/lib/hooks/useDisplayResult'

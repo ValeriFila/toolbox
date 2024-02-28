@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreationCard } from '../../../../entities/Note'
 import { setNotes } from '../store/notesSlice'
@@ -8,6 +8,11 @@ export const NewNote = () => {
     const notes = useSelector((state) => state.notes.notes)
     const [note, setNote] = useState('')
     const [remain, setRemain] = useState(200)
+    // const notesMap = useMemo(() => {
+    //     const map = new Map(notes)
+    //
+    //     return Object.entries(Object.fromEntries(map.entries()))
+    // }, [notes])
 
     useEffect(() => {
         localStorage.setItem('notes', JSON.stringify(notes))
@@ -21,10 +26,14 @@ export const NewNote = () => {
     }
     const createNote = () => {
         if (note.trim().length > 0) {
+            const id = Date.now()
             dispatch(setNotes([...notes, {
-                id: Date.now(),
-                note,
-                date: new Date().toLocaleDateString(),
+                [id]: {
+                    id,
+                    note,
+                    date: new Date().toLocaleDateString(),
+                    fulfilled: false,
+                },
             }]))
             setNote('')
             setRemain(200)

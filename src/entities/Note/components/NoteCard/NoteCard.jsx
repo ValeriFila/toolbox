@@ -1,19 +1,25 @@
-import classes from './NoteCard.module.scss'
-import { NotesButton } from '../../../../shared/ui'
+import './NoteCard.scss'
+import clsx from 'clsx'
+import { CustomCheckbox, NotesButton } from '../../../../shared/ui'
 
-export const NoteCard = ({ props, onClick }) => {
+export const NoteCard = ({ props, onClickButton, onClickCheckbox, fulfilled }) => {
     return (
         <div
             id={props.id}
-            className={classes.note}
+            className='note'
         >
-            <p className={classes.note__text}>{props.noteText}</p>
-            <div className={classes.note__bottom}>
-                <p className={classes.note__bottom__date}>{props.creationDate}</p>
-                <NotesButton
-                    title='УДАЛИТЬ'
-                    onClick={onClick}
-                />
+            <p className={clsx('note__text', fulfilled && 'note__text--crossed')}>{props.noteText}</p>
+            <div className='note__bottom'>
+                <p className='note__bottom__date'>{props.creationDate}</p>
+                <div className='note__bottom__managing-area'>
+                    <NotesButton
+                        title='УДАЛИТЬ'
+                        onClick={onClickButton}
+                    />
+                    <CustomCheckbox
+                        onClick={onClickCheckbox}
+                    />
+                </div>
             </div>
         </div>
     )
