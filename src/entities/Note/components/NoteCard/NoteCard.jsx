@@ -2,7 +2,7 @@ import './NoteCard.scss'
 import clsx from 'clsx'
 import { CustomCheckbox, NotesButton } from '../../../../shared/ui'
 
-export const NoteCard = ({ props, onClickButton, onClickCheckbox, fulfilled }) => {
+export const NoteCard = ({ props, onClickButton, onChangeCheckbox, fulfilled }) => {
     return (
         <div
             id={props.id}
@@ -17,7 +17,8 @@ export const NoteCard = ({ props, onClickButton, onClickCheckbox, fulfilled }) =
                         onClick={onClickButton}
                     />
                     <CustomCheckbox
-                        onClick={onClickCheckbox}
+                        onChange={onChangeCheckbox}
+                        checked={fulfilled}
                     />
                 </div>
             </div>

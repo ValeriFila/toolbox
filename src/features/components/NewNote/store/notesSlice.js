@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 let notes
 if (localStorage.getItem('notes') === null) {
-    notes = []
+    notes = {}
 } else {
     notes = JSON.parse(localStorage.getItem('notes'))
 }
@@ -10,7 +10,7 @@ if (localStorage.getItem('notes') === null) {
 const notesSlice = createSlice({
     name: 'notes',
     initialState: {
-        notes: [...notes],
+        notes: { ...notes },
         note: '',
     },
     reducers: {

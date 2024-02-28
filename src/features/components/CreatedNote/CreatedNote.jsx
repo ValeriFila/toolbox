@@ -1,31 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback } from 'react'
 import { NoteCard } from '../../../entities/Note'
 import { setNotes } from '../NewNote/store/notesSlice'
 
 export const CreatedNote = ({ id, note, date }) => {
     const dispatch = useDispatch()
     const notes = useSelector((state) => state.notes.notes)
-    const [fulfilled, setFulfilled] = useState(false)
 
     const removeNote = useCallback((id) => {
-        dispatch(setNotes([...notes.filter((note) => {
-            const i = Object.keys(note)[0]
+        const notesArray = Object.entries(notes)
+        const filteredArray = notesArray.filter((note) => {
+            const i = note[0]
             return i !== id
-        })]))
+        })
+        dispatch(setNotes({ ...Object.fromEntries(filteredArray) }))
     }, [dispatch, notes])
 
-    const fulfillNote = (id) => {
-        // const findNote = notes.some((note) => {
-        //     if (note.id === id) {
-        //         note.fulfilled = true
-        //         setFulfilled((prev) => !prev)
-        //         return true
-        //     }
-        // })
-        // const foundNote = notesMap.get(id)
-        // console.log(foundNote)
-    }
+    const fulfillNote = useCallback((id) => {
+        const targetNote = { [id]: { ...notes[id], fulfilled: !notes[id].fulfilled } }
+        dispatch(setNotes({ ...notes, ...targetNote }))
+    }, [dispatch, notes])
 
     return (
         <NoteCard
@@ -35,8 +29,8 @@ export const CreatedNote = ({ id, note, date }) => {
                 creationDate: date,
             }}
             onClickButton={() => removeNote(id)}
-            onClickCheckbox={() => fulfillNote(id)}
-            fulfilled={fulfilled}
+            onChangeCheckbox={() => fulfillNote(id)}
+            fulfilled={notes[id].fulfilled}
         />
     )
 }

@@ -7,15 +7,17 @@ export const NotesSection = () => {
 
     const createdNotes = useMemo(() => {
         if (notes) {
-            return notes.map((note, index) => {
-                const id = Object.keys(note)[0]
+            const arrayNotes = Object.entries(notes)
+            return arrayNotes.map((note, index) => {
+                const id = note[0]
+                const noteBody = note[1]
 
                 return (
                     <CreatedNote
                         key={`note_${index.toString()}`}
                         id={id}
-                        note={note[id].note}
-                        date={note[id].date}
+                        note={noteBody.note}
+                        date={noteBody.date}
                     />
                 )
             })
