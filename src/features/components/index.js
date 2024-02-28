@@ -1,2 +1,2 @@
 export { CreatedNote } from './CreatedNote/CreatedNote.jsx'
-export { NewNote } from './NewNote/NewNote.jsx'
+export { NewNote } from './NewNote/components/NewNote.jsx'
