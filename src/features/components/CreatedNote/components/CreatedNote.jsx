@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback } from 'react'
-import { NoteCard } from '../../../entities/Note'
-import { setNotes } from '../NewNote/store/notesSlice'
+import { NoteCard } from '../../../../entities/Note'
+import { setNotes, setQueriedNotes } from '../../../model/store/notesSlice'
 
 export const CreatedNote = ({ id, note, date }) => {
     const dispatch = useDispatch()
@@ -13,6 +13,7 @@ export const CreatedNote = ({ id, note, date }) => {
             const i = note[0]
             return i !== id
         })
+        dispatch(setQueriedNotes({ ...Object.fromEntries(filteredArray) }))
         dispatch(setNotes({ ...Object.fromEntries(filteredArray) }))
     }, [dispatch, notes])
 

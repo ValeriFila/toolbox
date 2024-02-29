@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { CreatedNote, NewNote } from '../../../features/components'
+import { CreatedNote, NewNote, SearchArea } from '../../../features/components'
 
 export const NotesSection = () => {
-    const notes = useSelector((state) => state.notes.notes)
-
+    const queriedNotes = useSelector((state) => state.notes.queriedNotes)
     const createdNotes = useMemo(() => {
-        if (notes) {
-            const arrayNotes = Object.entries(notes)
+        if (queriedNotes) {
+            const arrayNotes = Object.entries(queriedNotes)
             return arrayNotes.map((note, index) => {
                 const id = note[0]
                 const noteBody = note[1]
@@ -23,11 +22,12 @@ export const NotesSection = () => {
             })
         }
         return null
-    }, [notes])
+    }, [queriedNotes])
 
     return (
         <div className='notes-page'>
             <h1 className='notes-page__title'>Заметки</h1>
+            <SearchArea />
             <div className='notes-page__notes-section'>
                 {createdNotes}
                 <NewNote />

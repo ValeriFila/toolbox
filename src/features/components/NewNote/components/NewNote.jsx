@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreationCard } from '../../../../entities/Note'
-import { setNotes } from '../store/notesSlice'
+import { setNotes } from '../../../model/store/notesSlice'
 
 export const NewNote = () => {
     const dispatch = useDispatch()
     const notes = useSelector((state) => state.notes.notes)
     const [note, setNote] = useState('')
     const [remain, setRemain] = useState(200)
-    // const notesMap = new Map()
-    // console.log(JSON.stringify(Object.entries(notesMap)))
 
     useEffect(() => {
         localStorage.setItem('notes', JSON.stringify(notes))
-    }, [notes])
+    }, [dispatch, notes])
 
     const handleChange = (e) => {
         if (e.target.value.length <= 200) {
