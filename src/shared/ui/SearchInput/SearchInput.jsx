@@ -1,11 +1,11 @@
 import './SearchInput.scss'
 
-export const SearchInput = ({ placeholder, value, onChange }) => {
+export const SearchInput = ({ placeholder, onChange, inputRef }) => {
     return (
         <input
+            ref={inputRef}
             type='text'
             placeholder={placeholder}
-            value={value}
             onChange={onChange}
             className='search-input'
         />
