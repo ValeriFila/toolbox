@@ -1,34 +1,11 @@
-import React, { useCallback, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { SquareButton } from '../../shared/ui'
-import classes from './Calculator.module.scss'
-import { useCountNums } from '../../entities/Calculator/lib/hooks/useCountNums'
-import { useDisplayResult } from '../../entities/Calculator/lib/hooks/useDisplayResult'
-import { setResult } from '../../app/store/resultSlice'
+import { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { CalculatorBody } from '../../../../entities/Calculator'
+import { setResult } from '../../../model/store/resultSlice'
+import { useCountNums } from '../lib/hooks/useCountNums'
+import { useDisplayResult } from '../lib/hooks/useDisplayResult'
 
-const buttons = [
-    'AC',
-    '[+/-]',
-    '%',
-    '/',
-    '7',
-    '8',
-    '9',
-    'x',
-    '4',
-    '5',
-    '6',
-    '-',
-    '1',
-    '2',
-    '3',
-    '+',
-    '0',
-    '.',
-    '=',
-]
-
-const Calculator = () => {
+export const CountCalculator = () => {
     const result = useSelector((state) => state.result.result)
     const dispatch = useDispatch()
     const [count, setCount] = useState(0)
@@ -89,33 +66,9 @@ const Calculator = () => {
         result])
 
     return (
-        <div className={classes.calculator__body}>
-            <div className={classes.calculator__body__calculator}>
-                {buttons.map((button) => (
-                    <SquareButton
-                        key={button}
-                        theme={button === '0' ? 'calc-btn--big' : 'calc-btn'}
-                        onClick={() => numberClick(button)}
-                    >
-                        <p className={classes.calculator__body__calculator__text}>{button}</p>
-                    </SquareButton>
-                ))}
-            </div>
-            {count.toString().length > 9 ? (
-                <p
-                    className={classes.calculator__body__calculator__count}
-                >
-                    {count.toExponential(3)}
-                </p>
-            ) : (
-                <p
-                    className={classes.calculator__body__calculator__count}
-                >
-                    {count.toString()}
-                </p>
-            )}
-        </div>
+        <CalculatorBody
+            onClickButton={numberClick}
+            result={count}
+        />
     )
 }
-
-export default Calculator

@@ -1,3 +1,5 @@
 export { CreatedNote } from './CreatedNote/components/CreatedNote.jsx'
 export { NewNote } from './NewNote/components/NewNote.jsx'
 export { SearchArea } from './SearchArea/components/SearchArea.jsx'
+export { CountCalculator } from './CountCalculator/components/CountCalculator.jsx'
+export { DisplayResult } from './DisplayResult/components/DisplayResult.jsx'

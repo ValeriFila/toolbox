@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setResult } from '../../../../app/store/resultSlice'
+import { setResult } from '../../../../model/store/resultSlice'
 
 export const useClearField = () => {
     const result = useSelector((state) => state.result.result)

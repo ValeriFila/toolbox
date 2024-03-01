@@ -1,11 +1,11 @@
 import { Link, NavLink } from 'react-router-dom'
 import classes from './CustomNavbar.module.scss'
-import { SquareButton } from '../../shared/ui'
-import calculator from '../../assets/icons/calculator.png'
-import notes from '../../assets/icons/wirte.png'
-import weather from '../../assets/icons/cloudy.png'
+import { SquareButton } from '../../../shared/ui'
+import calculator from '../../../assets/icons/calculator.png'
+import notes from '../../../assets/icons/wirte.png'
+import weather from '../../../assets/icons/cloudy.png'
 
-const CustomNavbar = () => {
+export const CustomNavbar = () => {
     const images = [
         {
             name: 'calculator',
@@ -50,5 +50,3 @@ const CustomNavbar = () => {
         </div>
     )
 }
-
-export default CustomNavbar

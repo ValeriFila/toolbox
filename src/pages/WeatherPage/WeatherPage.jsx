@@ -1,9 +1,7 @@
 import React from 'react'
 
-const WeatherPage = () => {
+export const WeatherPage = () => {
     return (
         <h1>Weather</h1>
     )
 }
-
-export default WeatherPage

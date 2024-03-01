@@ -1,8 +1,7 @@
 import './App.scss'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-
-import CustomNavbar from '../widgets/CustomNavbar/CustomNavbar'
+import { CustomNavbar } from '../widgets'
 
 function App() {
     return (

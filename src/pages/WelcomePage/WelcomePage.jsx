@@ -1,9 +1,7 @@
 import React from 'react'
 
-const WelcomePage = () => {
+export const WelcomePage = () => {
     return (
         <h1>Welcome Page</h1>
     )
 }
-
-export default WelcomePage

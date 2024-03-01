@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import resultReducer from './resultSlice'
+import resultReducer from '../../features/model/store/resultSlice'
 import notesReducer from '../../features/model/store/notesSlice'
 
 export default configureStore({

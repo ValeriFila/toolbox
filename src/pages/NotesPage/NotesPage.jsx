@@ -1,11 +1,9 @@
 import React from 'react'
 import './NotesPage.scss'
-import { NotesSection } from '../../widgets/NotesSection/components/NotesSection'
+import { NotesSection } from '../../widgets'
 
-const NotesPage = () => {
+export const NotesPage = () => {
     return (
         <NotesSection />
     )
 }
-
-export default NotesPage

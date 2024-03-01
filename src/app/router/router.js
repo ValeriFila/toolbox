@@ -1,11 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom'
 import React from 'react'
-import WelcomePage from '../../pages/WelcomePage/WelcomePage'
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage'
-import NotesPage from '../../pages/NotesPage/NotesPage'
+import {
+    WelcomePage,
+    NotFoundPage,
+    NotesPage,
+    WeatherPage,
+    CalculatorPage,
+} from '../../pages'
 import App from '../App'
-import WeatherPage from '../../pages/WeatherPage/WeatherPage'
-import CalculatorPage from '../../pages/CalculatorPage/CalculatorPage'
 
 export const router = createBrowserRouter([
     {
