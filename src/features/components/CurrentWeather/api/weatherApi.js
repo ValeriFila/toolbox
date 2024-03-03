@@ -7,7 +7,7 @@ const weatherApi = rtkApi.injectEndpoints({
         getCurrentWeather: build.query({
             query: (location, days = undefined) => ({
                 method: 'GET',
-                url: 'current.xml',
+                url: 'current.json',
                 params: {
                     key: API_KEY,
                     q: location,
