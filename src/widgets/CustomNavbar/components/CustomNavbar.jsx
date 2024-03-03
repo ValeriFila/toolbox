@@ -1,9 +1,9 @@
 import { Link, NavLink } from 'react-router-dom'
 import classes from './CustomNavbar.module.scss'
 import { SquareButton } from '../../../shared/ui'
-import calculator from '../../../assets/icons/calculator.png'
-import notes from '../../../assets/icons/wirte.png'
-import weather from '../../../assets/icons/cloudy.png'
+import calculator from '../../../shared/assets/icons/calculator.png'
+import notes from '../../../shared/assets/icons/wirte.png'
+import weather from '../../../shared/assets/icons/cloudy.png'
 
 export const CustomNavbar = () => {
     const images = [

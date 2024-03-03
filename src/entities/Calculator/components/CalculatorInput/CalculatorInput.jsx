@@ -1,4 +1,4 @@
-import next from '../../../../assets/icons/next.png'
+import next from '../../../../shared/assets/icons/next.png'
 import classes from './CalculatorInput.module.scss'
 
 export const CalculatorInput = ({ onClickClear, result }) => {
