@@ -1,26 +1,30 @@
 import './CurrentWeather.scss'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux'
 import { useGetCurrentWeatherQuery } from '../api/weatherApi.js'
-import { useCurrentPosition } from '../../../../shared/lib'
+import { useCurrentPosition } from '../lib/helpers/useCurrentPosition'
 import { WeatherBlock } from '../../../../entities/Weather'
 
 export const CurrentWeather = () => {
+    const location = useSelector((state) => state.location.location)
     const ref = useRef()
+
+    useCurrentPosition()
+
     const handleChange = () => {
         console.log('change')
     }
 
     const fetchTheWeather = () => {
         console.log('fetch the weather...')
+        console.log(location)
     }
-    const location = useCurrentPosition().join(',')
-    // console.log('location', location)
 
     const {
         data,
         // isFetching,
         // isLoading,
-    } = useGetCurrentWeatherQuery(location, 7)
+    } = useGetCurrentWeatherQuery(location)
 
     return (
         <WeatherBlock
