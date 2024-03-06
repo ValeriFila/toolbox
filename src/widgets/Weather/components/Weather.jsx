@@ -1,7 +1,11 @@
-import { CurrentWeather } from '../../../features/components'
+import { CurrentWeather, SearchCity } from '../../../features/components'
+import './Weather.scss'
 
 export const Weather = () => {
     return (
-        <CurrentWeather />
+        <div className='weather-widget'>
+            <SearchCity />
+            <CurrentWeather />
+        </div>
     )
 }

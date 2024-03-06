@@ -1,0 +1,29 @@
+.search-city {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.4rem;
+
+    &__cities {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: rgb(23, 36, 55);
+        gap: 0.7rem;
+        background-color: #ffffff;
+        border-radius: 5px;
+
+        &__city {
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+            padding: 0.2rem;
+
+            &:hover {
+                background-color: rgba(50, 65, 86, 0.56);
+            }
+        }
+    }
+}

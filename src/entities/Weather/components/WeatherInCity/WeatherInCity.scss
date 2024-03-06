@@ -1,0 +1,12 @@
+.weather-in-city {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 30px;
+    color: white;
+    gap: 1rem;
+
+    &__result {
+        
+    }
+}

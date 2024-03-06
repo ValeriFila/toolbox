@@ -2,23 +2,5 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
-    &__cities {
-        display: flex;
-        flex-direction: column;
-        padding: 2rem;
-        align-items: start;
-        justify-content: center;
-        font-size: 2rem;
-        color: white;
-        gap: 1rem;
-
-        &__city {
-            cursor: pointer;
-
-            &:hover {
-                color: slategrey;
-            }
-        }
-    }
+    gap: 2rem;
 }

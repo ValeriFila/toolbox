@@ -1,1 +1,2 @@
-export { WeatherBlock } from './components/WeatherBlock.jsx'
+export { SearchingCityBlock } from './components/SearchingCityBlock/SearchingCityBlock.jsx'
+export { WeatherInCity } from './components/WeatherInCity/WeatherInCity.jsx'
