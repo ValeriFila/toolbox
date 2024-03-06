@@ -7,7 +7,7 @@ import { WeatherInCity } from '../../../../entities/Weather'
 export const CurrentWeather = () => {
     const location = useSelector((state) => state.location.location)
 
-    useCurrentPosition()
+    // useCurrentPosition()
 
     const {
         data,

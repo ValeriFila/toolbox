@@ -11,10 +11,10 @@ export const SearchingCityBlock = ({ inputRef, onChange, onClick }) => {
                     inputRef={inputRef}
                     onChange={onChange}
                 />
-                <NotesButton
-                    title='УЗНАТЬ ПОГОДУ'
-                    onClick={onClick}
-                />
+                {/* <NotesButton */}
+                {/*    title='УЗНАТЬ ПОГОДУ' */}
+                {/*    onClick={onClick} */}
+                {/* /> */}
             </div>
         </div>
     )
