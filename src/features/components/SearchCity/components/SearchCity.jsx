@@ -1,8 +1,9 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { SearchingCityBlock } from '../../../../entities/Weather'
 import { useFetchCityMutation } from '../api/cityApi'
 import { setLocation } from '../../../model/store/locationSlice'
+import { useDebounce } from '../../../../shared/lib'
 import './SearchCity.scss'
 
 export const SearchCity = () => {
@@ -10,6 +11,7 @@ export const SearchCity = () => {
     const [queryRes, setQueryRes] = useState(null)
     const ref = useRef()
     const [fetchCity, result] = useFetchCityMutation()
+
     const handleChange = (e) => {
         ref.current.value = e.target.value
         fetchCity(ref.current.value)
@@ -19,6 +21,8 @@ export const SearchCity = () => {
             setQueryRes(result.data?.suggestions)
         }
     }
+
+    const findCity = useDebounce((e) => handleChange(e), 300)
 
     const changeLocation = useCallback((city) => {
         ref.current.value = ''
@@ -56,7 +60,7 @@ export const SearchCity = () => {
         <div className='search-city'>
             <SearchingCityBlock
                 inputRef={ref}
-                onChange={(e) => handleChange(e)}
+                onChange={(e) => findCity(e)}
             />
             <div className='search-city__cities'>
                 {createdCitiesList}
