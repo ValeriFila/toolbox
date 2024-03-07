@@ -1,7 +1,11 @@
 import React from 'react'
+import { WelcomeSection } from '../../widgets'
+import './WelcomePage.scss'
 
 export const WelcomePage = () => {
     return (
-        <h1>Welcome Page</h1>
+        <div className='welcome-page'>
+            <WelcomeSection />
+        </div>
     )
 }

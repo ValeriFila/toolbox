@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { CreatedNote, NewNote, SearchArea } from '../../../features/components'
+import './NotesSection.scss'
 
 export const NotesSection = () => {
     const queriedNotes = useSelector((state) => state.notes.queriedNotes)
