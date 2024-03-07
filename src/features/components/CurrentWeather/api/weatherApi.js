@@ -15,9 +15,9 @@ const weatherApi = rtkApi.injectEndpoints({
                     lang: 'ru',
                 },
             }),
-            async onQueryStarted(arg, api) {
-                console.log('запрос начался...', arg)
-            },
+            // async onQueryStarted(arg, api) {
+            //     // console.log('запрос начался...', arg)
+            // },
             providesTags: ['Weather'],
         }),
     }),
