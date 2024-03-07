@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/github.io/toolbox/static/css/main.c2bc5997.css",
+    "main.js": "/github.io/toolbox/static/js/main.5d653745.js",
+    "static/media/Mikar.ttf": "/github.io/toolbox/static/media/Mikar.836d460b5fc916df01bc.ttf",
+    "index.html": "/github.io/toolbox/index.html",
+    "main.c2bc5997.css.map": "/github.io/toolbox/static/css/main.c2bc5997.css.map",
+    "main.5d653745.js.map": "/github.io/toolbox/static/js/main.5d653745.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2bc5997.css",
+    "static/js/main.5d653745.js"
+  ]
+}
