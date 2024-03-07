@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { useCallback } from 'react'
 import { setLocation } from '../../../../model/store/locationSlice'
 
 export const useCurrentPosition = () => {
@@ -17,5 +18,7 @@ export const useCurrentPosition = () => {
         console.warn(`ERROR(${err.code}): ${err.message}`)
     }
 
-    navigator.geolocation.getCurrentPosition(success, error, options)
+    return useCallback(() => {
+        navigator.geolocation.getCurrentPosition(success, error, options)
+    }, [options, success])
 }

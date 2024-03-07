@@ -1,29 +1,39 @@
 import React from 'react'
 import './WeatherInCity.scss'
+import location from '../../../../shared/assets/icons/location.png'
 
 export const WeatherInCity = ({ data }) => {
     return (
         <div className='weather-in-city'>
             {data ? (
-                <div>
-                    <p>
-                        {data.location.name}
-                        ,
-                        <br />
-                        {data.location.country}
-                    </p>
-                    <div className='weather-in-city__result'>
+                <>
+                    <div className='weather-in-city__location'>
                         <img
-                            src={data.current.condition.icon}
-                            alt='current weather icon'
-                            className='weather-in-city__result__icon'
+                            src={location}
+                            alt='location icon'
+                            className='weather-in-city__location__icon'
                         />
                         <p>
-                            {data.current.temp_c}
-                            °C
+                            {data.location.name}
                         </p>
                     </div>
-                </div>
+                    <div className='weather-in-city__result'>
+                        <div className='weather-in-city__result__temperature'>
+                            <p className='weather-in-city__result__temperature__text'>
+                                {data.current.temp_c}
+                                °c
+                            </p>
+                            <img
+                                src={data.current.condition.icon}
+                                alt='current weather icon'
+                                className='weather-in-city__result__icon'
+                            />
+                        </div>
+                        <p className='weather-in-city__result__temperature__description'>
+                            {data.current.condition.text}
+                        </p>
+                    </div>
+                </>
             ) : (
                 <div className='weather-block__result-section'>
                     <p>Загрузка...</p>

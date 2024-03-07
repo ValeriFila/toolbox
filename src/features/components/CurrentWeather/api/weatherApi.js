@@ -12,6 +12,7 @@ const weatherApi = rtkApi.injectEndpoints({
                     key: API_KEY,
                     q: location,
                     days,
+                    lang: 'ru',
                 },
             }),
             async onQueryStarted(arg, api) {

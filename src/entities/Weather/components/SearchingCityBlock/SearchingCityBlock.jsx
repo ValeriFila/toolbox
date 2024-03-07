@@ -1,5 +1,5 @@
 import React from 'react'
-import { NotesButton, SearchInput } from '../../../../shared/ui'
+import { SearchInput } from '../../../../shared/ui'
 import './SearchingCityBlock.scss'
 
 export const SearchingCityBlock = ({ inputRef, onChange, onClick }) => {
@@ -11,10 +11,6 @@ export const SearchingCityBlock = ({ inputRef, onChange, onClick }) => {
                     inputRef={inputRef}
                     onChange={onChange}
                 />
-                {/* <NotesButton */}
-                {/*    title='УЗНАТЬ ПОГОДУ' */}
-                {/*    onClick={onClick} */}
-                {/* /> */}
             </div>
         </div>
     )

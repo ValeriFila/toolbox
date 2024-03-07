@@ -7,15 +7,8 @@ import './SearchCity.scss'
 
 export const SearchCity = () => {
     const dispatch = useDispatch()
-    const location = useSelector((state) => state.location.location)
     const [queryRes, setQueryRes] = useState(null)
     const ref = useRef()
-    // const fetchTheWeather = () => {
-    //     console.log('fetchTheWeather')
-    //     ref.current.value = ''
-    //     setQueryRes(null)
-    // }
-
     const [fetchCity, result] = useFetchCityMutation()
     const handleChange = (e) => {
         ref.current.value = e.target.value
@@ -31,7 +24,6 @@ export const SearchCity = () => {
         ref.current.value = ''
         setQueryRes(null)
         dispatch(setLocation(city))
-        console.log(city)
     }, [dispatch])
 
     const createdCitiesList = useMemo(() => {
@@ -58,14 +50,13 @@ export const SearchCity = () => {
             }
             return null
         })
-    }, [queryRes])
+    }, [changeLocation, queryRes])
 
     return (
         <div className='search-city'>
             <SearchingCityBlock
                 inputRef={ref}
                 onChange={(e) => handleChange(e)}
-                // onClick={() => fetchTheWeather()}
             />
             <div className='search-city__cities'>
                 {createdCitiesList}
