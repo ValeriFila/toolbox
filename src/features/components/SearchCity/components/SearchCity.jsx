@@ -12,9 +12,9 @@ export const SearchCity = () => {
     const ref = useRef()
     const [fetchCity, result] = useFetchCityMutation()
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         ref.current.value = e.target.value
-        fetchCity(ref.current.value)
+        await fetchCity(ref.current.value).unwrap()
         if (e.target.value.trim().length === 0) {
             setQueryRes(null)
         } else {
