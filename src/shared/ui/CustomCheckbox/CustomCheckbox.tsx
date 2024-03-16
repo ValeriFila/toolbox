@@ -1,6 +1,12 @@
 import './CustomCheckbox.scss'
+import React, { FC } from 'react'
 
-export const CustomCheckbox = ({ onChange, checked }) => {
+interface Checkbox {
+    onChange: () => void;
+    checked: boolean;
+}
+
+export const CustomCheckbox: FC<Checkbox> = ({ onChange, checked }) => {
     return (
         <input
             type='checkbox'

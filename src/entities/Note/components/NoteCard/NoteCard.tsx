@@ -1,8 +1,20 @@
 import './NoteCard.scss'
 import clsx from 'clsx'
-import { CustomCheckbox, NotesButton } from '../../../../shared/ui'
+import { FC } from 'react'
+import { CustomCheckbox, NotesButton } from 'shared/ui'
 
-export const NoteCard = ({ props, onClickButton, onChangeCheckbox, fulfilled }) => {
+interface Card {
+    props: {
+        id: string,
+        noteText: string,
+        creationDate: string
+    };
+    onClickButton: () => void;
+    onChangeCheckbox: () => void;
+    fulfilled: boolean;
+}
+
+export const NoteCard: FC<Card> = ({ props, onClickButton, onChangeCheckbox, fulfilled }) => {
     return (
         <div
             id={props.id}

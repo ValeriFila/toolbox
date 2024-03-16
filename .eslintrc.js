@@ -9,6 +9,7 @@ module.exports = {
         'airbnb',
     ],
     overrides: [],
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
@@ -28,7 +29,7 @@ module.exports = {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         'react/jsx-filename-extension': [1, {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
         }],
         'import/no-unresolved': 0,
         'import/prefer-default-export': 0,

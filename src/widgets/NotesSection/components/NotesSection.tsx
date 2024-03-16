@@ -1,13 +1,20 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { CreatedNote, NewNote, SearchArea } from '../../../features/components'
+import { CreatedNote, NewNote, SearchArea } from 'features/components'
 import './NotesSection.scss'
 
+type Note = {
+    note: string;
+    date: string;
+}
+
 export const NotesSection = () => {
+    // @ts-ignore
     const queriedNotes = useSelector((state) => state.notes.queriedNotes)
     const createdNotes = useMemo(() => {
         if (queriedNotes) {
-            const arrayNotes = Object.entries(queriedNotes)
+            const arrayNotes: [string, Note][] = Object.entries(queriedNotes)
+
             return arrayNotes.map((note, index) => {
                 const id = note[0]
                 const noteBody = note[1]

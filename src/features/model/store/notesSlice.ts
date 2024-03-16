@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const notes = localStorage.getItem('notes')
+
 const notesSlice = createSlice({
     name: 'notes',
     initialState: {
-        notes: localStorage.getItem('notes') === null ? {} : { ...JSON.parse(localStorage.getItem('notes')) },
-        queriedNotes: localStorage.getItem('notes') === null ? {} : { ...JSON.parse(localStorage.getItem('notes')) },
+        notes: notes === null ? {} : { ...JSON.parse(notes) },
+        queriedNotes: notes === null ? {} : { ...JSON.parse(notes) },
     },
     reducers: {
         setNotes: (state, action) => {

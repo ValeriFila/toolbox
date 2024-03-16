@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SearchField } from '../../../../entities/Note'
-import { setQueriedNotes } from '../../../model/store/notesSlice.js'
+import { setQueriedNotes } from '../../../model/store/notesSlice.ts'
 import { useDebounce } from '../../../../shared/lib'
 
 export const SearchArea = () => {

@@ -1,13 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback } from 'react'
-import { NoteCard } from '../../../../entities/Note'
+import { FC, useCallback } from 'react'
+import { NoteCard } from 'entities/Note'
 import { setNotes, setQueriedNotes } from '../../../model/store/notesSlice'
 
-export const CreatedNote = ({ id, note, date }) => {
+interface CreatedNoteCard {
+    id: string;
+    note: string;
+    date: string;
+}
+
+export const CreatedNote: FC<CreatedNoteCard> = ({ id, note, date }) => {
     const dispatch = useDispatch()
+    // @ts-ignore
     const notes = useSelector((state) => state.notes.notes)
 
-    const removeNote = useCallback((id) => {
+    const removeNote = useCallback((id: string) => {
         const notesArray = Object.entries(notes)
         const filteredArray = notesArray.filter((note) => {
             const i = note[0]
@@ -17,7 +24,7 @@ export const CreatedNote = ({ id, note, date }) => {
         dispatch(setNotes({ ...Object.fromEntries(filteredArray) }))
     }, [dispatch, notes])
 
-    const fulfillNote = useCallback((id) => {
+    const fulfillNote = useCallback((id: string) => {
         const targetNote = { [id]: { ...notes[id], fulfilled: !notes[id].fulfilled } }
         dispatch(setNotes({ ...notes, ...targetNote }))
     }, [dispatch, notes])

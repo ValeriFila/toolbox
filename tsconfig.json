@@ -1,17 +1,41 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
-        "module": "commonjs",
+        "baseUrl": "./src",
+        "jsx": "react-jsx",
         "target": "es5",
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext",
+            "ES5",
+        ],
+        "module": "ESNext",
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "useDefineForClassFields": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "Node",
+        "isolatedModules": true,
+        "noEmit": true,
         "noEmitOnError": true,
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "watch": true
+        "paths": {
+            "~/*": [
+                "./src/*"
+            ]
+        },
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true
     },
-    "exclude": [
-        "node_modules",
-        "build"
-    ]
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "include": [
+        "./src/**/*",
+        "src/types/custom.d.ts"
+    ],
+    "exclude": ["node_modules"]
 }
