@@ -2,7 +2,7 @@ import React from 'react'
 import { SearchInput } from '../../../../shared/ui'
 import './SearchingCityBlock.scss'
 
-export const SearchingCityBlock = ({ inputRef, onChange, onClick }) => {
+export const SearchingCityBlock = ({ inputRef, onChange }) => {
     return (
         <div className='weather-block'>
             <div className='weather-block__searching-section'>
