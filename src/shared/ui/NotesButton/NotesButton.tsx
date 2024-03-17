@@ -1,6 +1,12 @@
 import './NotesButton.scss'
+import { FC } from 'react'
 
-export const NotesButton = ({ onClick, title }) => {
+interface Button {
+    onClick: () => void;
+    title: string
+}
+
+export const NotesButton: FC<Button> = ({ onClick, title }) => {
     return (
         <button
             type='button'

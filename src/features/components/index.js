@@ -1,5 +1,5 @@
 export { CreatedNote } from './CreatedNote/components/CreatedNote.tsx'
-export { NewNote } from './NewNote/components/NewNote.jsx'
+export { NewNote } from './NewNote/components/NewNote.tsx'
 export { SearchArea } from './SearchArea/components/SearchArea.jsx'
 export { CountCalculator } from './CountCalculator/components/CountCalculator.jsx'
 export { DisplayResult } from './DisplayResult/components/DisplayResult.jsx'

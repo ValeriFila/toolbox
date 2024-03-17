@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CreationCard } from '../../../../entities/Note'
+import { CreationCard } from 'entities/Note'
 import { setNotes } from '../../../model/store/notesSlice'
 
-export const NewNote = () => {
+export const NewNote: FC = () => {
     const dispatch = useDispatch()
+    // @ts-ignore
     const notes = useSelector((state) => state.notes.notes)
     const [note, setNote] = useState('')
     const [remain, setRemain] = useState(200)
@@ -13,7 +14,7 @@ export const NewNote = () => {
         localStorage.setItem('notes', JSON.stringify(notes))
     }, [dispatch, notes])
 
-    const handleChange = (e) => {
+    const handleChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
         if (e.target.value.length <= 200) {
             setNote(e.target.value)
             setRemain(200 - e.target.value.length)

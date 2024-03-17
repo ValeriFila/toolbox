@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { CreatedNote, NewNote, SearchArea } from 'features/components'
 import './NotesSection.scss'
@@ -8,7 +8,7 @@ type Note = {
     date: string;
 }
 
-export const NotesSection = () => {
+export const NotesSection: FC = () => {
     // @ts-ignore
     const queriedNotes = useSelector((state) => state.notes.queriedNotes)
     const createdNotes = useMemo(() => {
