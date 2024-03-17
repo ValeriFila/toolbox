@@ -4,25 +4,32 @@ import { FC } from 'react'
 import { CustomCheckbox, NotesButton } from 'shared/ui'
 
 interface Card {
-    props: {
+    cardBody: {
         id: string,
         noteText: string,
         creationDate: string
-    };
-    onClickButton: () => void;
-    onChangeCheckbox: () => void;
-    fulfilled: boolean;
+    }
+    onClickButton: () => void
+    onChangeCheckbox: () => void
+    fulfilled: boolean
 }
 
-export const NoteCard: FC<Card> = ({ props, onClickButton, onChangeCheckbox, fulfilled }) => {
+export const NoteCard: FC<Card> = (props) => {
+    const {
+        cardBody,
+        onClickButton,
+        onChangeCheckbox,
+        fulfilled,
+    } = props
+
     return (
         <div
-            id={props.id}
+            id={cardBody.id}
             className='note'
         >
-            <p className={clsx('note__text', fulfilled && 'note__text--crossed')}>{props.noteText}</p>
+            <p className={clsx('note__text', fulfilled && 'note__text--crossed')}>{cardBody.noteText}</p>
             <div className='note__bottom'>
-                <p className='note__bottom__date'>{props.creationDate}</p>
+                <p className='note__bottom__date'>{cardBody.creationDate}</p>
                 <div className='note__bottom__managing-area'>
                     <NotesButton
                         title='УДАЛИТЬ'

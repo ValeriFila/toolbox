@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreationCard } from 'entities/Note'
 import { setNotes } from '../../../model/store/notesSlice'
 
-export const NewNote: FC = () => {
+export const NewNote = () => {
     const dispatch = useDispatch()
     // @ts-ignore
     const notes = useSelector((state) => state.notes.notes)
@@ -38,9 +38,7 @@ export const NewNote: FC = () => {
 
     return (
         <CreationCard
-            props={{
-                remaining: remain.toString(),
-            }}
+            remaining={remain.toString()}
             onClick={createNote}
             onChange={(e) => handleChange(e)}
             value={note}

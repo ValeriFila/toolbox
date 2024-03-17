@@ -1,17 +1,15 @@
 import './CreationCard.scss'
-import React, { FC } from 'react'
+import React from 'react'
 import { NotesButton } from 'shared/ui'
 
-interface Card {
-    props: {
-        remaining: string;
-    };
+interface CreationCardProps {
+    remaining: string;
     onClick: () => void;
     onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
     value: string;
 }
 
-export const CreationCard: FC<Card> = ({ props, onClick, onChange, value }) => {
+export const CreationCard = ({ remaining, onClick, onChange, value }: CreationCardProps) => {
     return (
         <div className='create-note'>
             <textarea
@@ -21,7 +19,7 @@ export const CreationCard: FC<Card> = ({ props, onClick, onChange, value }) => {
                 onChange={() => onChange}
             />
             <div className='create-note__bottom-part'>
-                <p className='create-note__bottom-part__date'>{props.remaining}</p>
+                <p className='create-note__bottom-part__date'>{remaining}</p>
                 <NotesButton
                     title='СОЗДАТЬ'
                     onClick={onClick}

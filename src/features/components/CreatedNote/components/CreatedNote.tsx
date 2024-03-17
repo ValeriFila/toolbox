@@ -31,7 +31,7 @@ export const CreatedNote: FC<CreatedNoteCard> = ({ id, note, date }) => {
 
     return (
         <NoteCard
-            props={{
+            cardBody={{
                 id,
                 noteText: note,
                 creationDate: date,

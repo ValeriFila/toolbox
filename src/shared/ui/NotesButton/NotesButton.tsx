@@ -1,12 +1,11 @@
 import './NotesButton.scss'
-import { FC } from 'react'
 
-interface Button {
+interface NotesButtonProps {
     onClick: () => void;
     title: string
 }
 
-export const NotesButton: FC<Button> = ({ onClick, title }) => {
+export const NotesButton = ({ onClick, title }: NotesButtonProps) => {
     return (
         <button
             type='button'
