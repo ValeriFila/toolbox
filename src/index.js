@@ -4,7 +4,7 @@ import './index.scss'
 import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { router } from './app/router/router'
-import store from './app/store/store'
+import store from './shared/store/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

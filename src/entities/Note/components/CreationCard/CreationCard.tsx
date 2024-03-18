@@ -9,14 +9,21 @@ interface CreationCardProps {
     value: string;
 }
 
-export const CreationCard = ({ remaining, onClick, onChange, value }: CreationCardProps) => {
+export const CreationCard = (props: CreationCardProps) => {
+    const {
+        remaining,
+        onClick,
+        onChange,
+        value,
+    } = props
+
     return (
         <div className='create-note'>
             <textarea
                 placeholder='Новая заметка...'
                 className='create-note__text-area'
                 value={value}
-                onChange={() => onChange}
+                onChange={onChange}
             />
             <div className='create-note__bottom-part'>
                 <p className='create-note__bottom-part__date'>{remaining}</p>
