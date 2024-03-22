@@ -1,18 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { FC, useCallback } from 'react'
+import { useAppDispatch, useAppSelector } from 'shared/lib'
+import { useCallback, memo } from 'react'
 import { NoteCard } from 'entities/Note'
 import { setNotes, setQueriedNotes } from '../../../model/store/notesSlice'
 
-interface CreatedNoteCard {
-    id: string;
-    note: string;
-    date: string;
+interface CreatedNoteProps {
+    id: string
+    note: string
+    date: string
 }
 
-export const CreatedNote: FC<CreatedNoteCard> = ({ id, note, date }) => {
-    const dispatch = useDispatch()
-    // @ts-ignore
-    const notes = useSelector((state) => state.notes.notes)
+export const CreatedNote = memo((props: CreatedNoteProps) => {
+    const {
+        id,
+        note,
+        date,
+    } = props
+
+    const dispatch = useAppDispatch()
+    const notes = useAppSelector((state) => state.notes.lsNotes)
 
     const removeNote = useCallback((id: string) => {
         const notesArray = Object.entries(notes)
@@ -41,4 +46,4 @@ export const CreatedNote: FC<CreatedNoteCard> = ({ id, note, date }) => {
             fulfilled={notes[id].fulfilled}
         />
     )
-}
+})

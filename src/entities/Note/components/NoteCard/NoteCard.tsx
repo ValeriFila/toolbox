@@ -1,9 +1,9 @@
 import './NoteCard.scss'
 import clsx from 'clsx'
-import { FC } from 'react'
+import { memo } from 'react'
 import { CustomCheckbox, NotesButton } from 'shared/ui'
 
-interface Card {
+interface NoteCardProps {
     cardBody: {
         id: string,
         noteText: string,
@@ -14,7 +14,7 @@ interface Card {
     fulfilled: boolean
 }
 
-export const NoteCard: FC<Card> = (props) => {
+export const NoteCard = memo((props: NoteCardProps) => {
     const {
         cardBody,
         onClickButton,
@@ -43,4 +43,4 @@ export const NoteCard: FC<Card> = (props) => {
             </div>
         </div>
     )
-}
+})

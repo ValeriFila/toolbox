@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SearchField } from '../../../../entities/Note'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { SearchField } from 'entities/Note'
+import { useAppSelector, useAppDispatch, useDebounce } from 'shared/lib'
 import { setQueriedNotes } from '../../../model/store/notesSlice.ts'
-import { useDebounce } from '../../../../shared/lib'
 
 export const SearchArea = () => {
-    const dispatch = useDispatch()
-    const ref = useRef()
-    const notes = useSelector((state) => state.notes.notes)
+    const dispatch = useAppDispatch()
+    const ref = useRef<HTMLInputElement>(null)
+    const notes = useAppSelector((state) => state.notes.lsNotes)
 
     useEffect(() => {
         dispatch(setQueriedNotes({ ...notes }))
@@ -16,7 +15,7 @@ export const SearchArea = () => {
         }
     }, [dispatch, notes])
 
-    const handleChange = useCallback((e) => {
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const resArray = Object.entries(notes).filter((note) => {
             return note[1].note.trim().toLowerCase().includes(e.target.value.trim().toLowerCase())
         })
@@ -24,7 +23,7 @@ export const SearchArea = () => {
         dispatch(setQueriedNotes({ ...resObj }))
     }, [dispatch, notes])
 
-    const debouncedChange = useDebounce((e) => handleChange(e), 400)
+    const debouncedChange = useDebounce((e: React.ChangeEvent<HTMLInputElement>) => handleChange(e), 400)
 
     return (
         <SearchField

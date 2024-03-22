@@ -15,6 +15,7 @@
         "strict": true,
         "useDefineForClassFields": true,
         "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
         "moduleResolution": "Node",
         "isolatedModules": true,
         "noEmit": true,

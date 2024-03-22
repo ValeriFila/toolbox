@@ -1,15 +1,15 @@
 import './CreationCard.scss'
-import React from 'react'
+import React, { memo } from 'react'
 import { NotesButton } from 'shared/ui'
 
 interface CreationCardProps {
-    remaining: string;
-    onClick: () => void;
-    onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
-    value: string;
+    remaining: string
+    onClick: () => void
+    onChange: React.ChangeEventHandler<HTMLTextAreaElement>
+    value: string
 }
 
-export const CreationCard = (props: CreationCardProps) => {
+export const CreationCard = memo((props: CreationCardProps) => {
     const {
         remaining,
         onClick,
@@ -34,4 +34,4 @@ export const CreationCard = (props: CreationCardProps) => {
             </div>
         </div>
     )
-}
+})

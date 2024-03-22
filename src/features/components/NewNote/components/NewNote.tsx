@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import { CreationCard } from 'entities/Note'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { setNotes } from '../../../model/store/notesSlice'
 
-export const NewNote = () => {
+export const NewNote = memo(() => {
     const dispatch = useAppDispatch()
-    const notes = useAppSelector((state) => state.notes.notes)
+    const notes = useAppSelector((state) => state.notes.lsNotes)
     const [note, setNote] = useState('')
     const [remain, setRemain] = useState(200)
 
@@ -43,4 +43,4 @@ export const NewNote = () => {
             value={note}
         />
     )
-}
+})

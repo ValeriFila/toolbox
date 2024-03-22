@@ -1,16 +1,17 @@
-import React, { FC, useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useMemo, memo } from 'react'
+import { useAppSelector } from 'shared/lib'
 import { CreatedNote, NewNote, SearchArea } from 'features/components'
 import './NotesSection.scss'
 
 type Note = {
-    note: string;
-    date: string;
+    id: string
+    note: string
+    date: string
+    fulfilled: boolean
 }
 
-export const NotesSection: FC = () => {
-    // @ts-ignore
-    const queriedNotes = useSelector((state) => state.notes.queriedNotes)
+export const NotesSection = memo(() => {
+    const queriedNotes = useAppSelector((state) => state.notes.queriedNotes)
     const createdNotes = useMemo(() => {
         if (queriedNotes) {
             const arrayNotes: [string, Note][] = Object.entries(queriedNotes)
@@ -42,4 +43,4 @@ export const NotesSection: FC = () => {
             </div>
         </div>
     )
-}
+})
