@@ -1,4 +1,4 @@
-import { CountCalculator, DisplayResult } from '../../../features/components'
+import { CountCalculator, DisplayResult } from 'features/components'
 
 export const Calculator = () => {
     return (

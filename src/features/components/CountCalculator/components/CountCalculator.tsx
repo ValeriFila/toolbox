@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { CalculatorBody } from '../../../../entities/Calculator'
+import { useAppDispatch, useAppSelector } from 'shared/lib'
+import { CalculatorBody } from 'entities/Calculator'
 import { setResult } from '../../../model/store/resultSlice'
 import { useCountNums } from '../lib/hooks/useCountNums'
 import { useDisplayResult } from '../lib/hooks/useDisplayResult'
 
 export const CountCalculator = () => {
-    const result = useSelector((state) => state.result.result)
-    const dispatch = useDispatch()
+    const result = useAppSelector((state) => state.result.result)
+    const dispatch = useAppDispatch()
     const [count, setCount] = useState(0)
     const [operatorPressed, setOperatorPressed] = useState(false)
     const [isFirstOperator, setIsFirstOperator] = useState(false)
@@ -16,7 +16,7 @@ export const CountCalculator = () => {
     const countNums = useCountNums()
     const displayResult = useDisplayResult()
 
-    const numberClick = useCallback((button) => {
+    const numberClick = useCallback((button: string) => {
         const params = [
             button,
             setCount,

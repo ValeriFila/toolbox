@@ -6,8 +6,8 @@ import {
     NotesPage,
     WeatherPage,
     CalculatorPage,
-} from '../../pages'
-import App from '../App'
+} from 'pages'
+import App from 'app/App.tsx'
 
 export const router = createHashRouter([
     {

@@ -1,6 +1,11 @@
 import React from 'react'
 import './CalculatorBody.scss'
-import { SquareButton } from '../../../../shared/ui'
+import { SquareButton } from 'shared/ui'
+
+interface CalculatorBodyProps {
+    onClickButton: (b: string) => void
+    result: number
+}
 
 const buttons = [
     'AC',
@@ -24,7 +29,12 @@ const buttons = [
     '=',
 ]
 
-export const CalculatorBody = ({ onClickButton, result }) => {
+export const CalculatorBody = (props: CalculatorBodyProps) => {
+    const {
+        onClickButton,
+        result,
+    } = props
+
     return (
         <div className='calculator__body'>
             <div className='calculator__body__calculator'>
