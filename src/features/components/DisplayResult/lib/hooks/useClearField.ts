@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { setResult } from '../../../../model/store/resultSlice'
 
 export const useClearField = () => {
-    const result = useSelector((state) => state.result.result)
-    const dispatch = useDispatch()
+    const result = useAppSelector((state) => state.result.result)
+    const dispatch = useAppDispatch()
     
     return useCallback(() => {
         if (result !== '0' && result !== '-0') {

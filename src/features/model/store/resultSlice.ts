@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const result: string = '0'
+
 const resultSlice = createSlice({
     name: 'result',
     initialState: {
-        result: '0',
+        result,
     },
     reducers: {
         setResult: (state, action) => {
