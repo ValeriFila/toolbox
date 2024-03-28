@@ -1,8 +1,18 @@
 import React from 'react'
-import { SearchInput } from '../../../../shared/ui'
+import { SearchInput } from 'shared/ui'
 import './SearchingCityBlock.scss'
 
-export const SearchingCityBlock = ({ inputRef, onChange }) => {
+interface SearchingCityBlockProps {
+    inputRef: React.LegacyRef<HTMLInputElement> | undefined
+    onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
+}
+
+export const SearchingCityBlock = (props: SearchingCityBlockProps) => {
+    const {
+        inputRef,
+        onChange,
+    } = props
+
     return (
         <div className='weather-block'>
             <div className='weather-block__searching-section'>

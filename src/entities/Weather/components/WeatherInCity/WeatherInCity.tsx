@@ -1,8 +1,23 @@
 import React from 'react'
 import './WeatherInCity.scss'
-import location from '../../../../shared/assets/icons/location.png'
+import location from 'shared/assets/icons/location.png'
 
-export const WeatherInCity = ({ data }) => {
+interface WeatherInCityProps {
+    data: {
+        current: {
+            temp_c: number
+            condition: {
+                icon: string
+                text: string
+            }
+        }
+        location: {
+            name: string
+        }
+    }
+}
+
+export const WeatherInCity = ({ data }: WeatherInCityProps) => {
     return (
         <div className='weather-in-city'>
             {data ? (

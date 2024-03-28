@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'shared/lib'
 import { CalculatorBody } from 'entities/Calculator'
+import { useCountNums } from 'features/components/CountCalculator/lib/hooks/useCountNums.ts'
+import { useDisplayResult } from 'features/components/CountCalculator/lib/hooks/useDisplayResult.ts'
 import { setResult } from '../../../model/store/resultSlice'
-import { useCountNums } from '../lib/hooks/useCountNums'
-import { useDisplayResult } from '../lib/hooks/useDisplayResult'
 
 export const CountCalculator = () => {
     const result = useAppSelector((state) => state.result.result)
@@ -17,14 +17,14 @@ export const CountCalculator = () => {
     const displayResult = useDisplayResult()
 
     const numberClick = useCallback((button: string) => {
-        const params = [
+        const params = {
             button,
             setCount,
             setOperatorPressed,
             setIsFirstOperator,
             setEqualPressed,
             setLastOperator,
-        ]
+        }
         if (button === '-' || button === '+' || button === '/' || button === 'x') {
             setLastOperator(button)
             if (!isFirstOperator) {
@@ -48,10 +48,10 @@ export const CountCalculator = () => {
             setEqualPressed(true)
             setOperatorPressed(false)
         } else if (!operatorPressed) {
-            const res = displayResult(...params, false)
+            const res = displayResult(params, false)
             dispatch(setResult(res))
         } else {
-            const res = displayResult(...params, true)
+            const res = displayResult(params, true)
             dispatch(setResult(res))
             setOperatorPressed(false)
         }

@@ -1,40 +1,49 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { SearchingCityBlock } from '../../../../entities/Weather'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
+import { useAppDispatch, useDebounce } from 'shared/lib'
+import { SearchingCityBlock } from 'entities/Weather'
 import { useFetchCityMutation } from '../api/cityApi'
 import { setLocation } from '../../../model/store/locationSlice'
-import { useDebounce } from '../../../../shared/lib'
 import './SearchCity.scss'
 
+interface QueriedCities {
+    data: {
+        city: string
+    }
+}
+
 export const SearchCity = () => {
-    const dispatch = useDispatch()
-    const [queryRes, setQueryRes] = useState(null)
-    const ref = useRef()
+    const dispatch = useAppDispatch()
+    const [queryRes, setQueryRes] = useState([])
+    const ref = useRef<HTMLInputElement>(null)
     const [fetchCity, result] = useFetchCityMutation()
 
-    const handleChange = async (e) => {
-        ref.current.value = e.target.value
-        await fetchCity(ref.current.value).unwrap()
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (ref.current) {
+            ref.current.value = e.target.value
+            await fetchCity(ref.current.value).unwrap()
+        }
         if (e.target.value.trim().length === 0) {
-            setQueryRes(null)
+            setQueryRes([])
         } else {
             setQueryRes(result.data?.suggestions)
         }
     }
 
-    const findCity = useDebounce((e) => handleChange(e), 300)
+    const findCity = useDebounce((e: React.ChangeEvent<HTMLInputElement>) => handleChange(e), 300)
 
-    const changeLocation = useCallback((city) => {
-        ref.current.value = ''
-        setQueryRes(null)
+    const changeLocation = useCallback((city: string) => {
+        if (ref.current) {
+            ref.current.value = ''
+        }
+        setQueryRes([])
         dispatch(setLocation(city))
     }, [dispatch])
 
     const createdCitiesList = useMemo(() => {
-        if (!queryRes) {
+        if (queryRes.length === 0) {
             return null
         }
-        const citiesArray = queryRes.reduce((accum, city) => {
+        const citiesArray: string[] = queryRes.reduce((accum: string[], city: QueriedCities) => {
             return [...accum, city.data.city]
         }, [])
         const uniqueCities = new Set([...citiesArray])

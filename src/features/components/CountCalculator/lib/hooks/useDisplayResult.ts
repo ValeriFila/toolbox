@@ -1,23 +1,33 @@
-import { useSelector } from 'react-redux'
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
+import { useAppSelector } from 'shared/lib'
+
+interface UseDisplayResultProps {
+    button: string
+    setCount: React.Dispatch<React.SetStateAction<number>>
+    setOperatorPressed: React.Dispatch<React.SetStateAction<boolean>>
+    setIsFirstOperator: React.Dispatch<React.SetStateAction<boolean>>
+    setEqualPressed: React.Dispatch<React.SetStateAction<boolean>>
+    setLastOperator: React.Dispatch<React.SetStateAction<string>>
+}
 
 export const useDisplayResult = () => {
-    const prev = useSelector((state) => state.result.result)
+    const prev = useAppSelector((state) => state.result.result)
 
-    return useCallback((
-        button,
-        setCount,
-        setOperatorPressed,
-        setIsFirstOperator,
-        setEqualPressed,
-        setLastOperator,
-        operatorPressed,
-    ) => {
+    return useCallback((props: UseDisplayResultProps, operatorPressed: boolean) => {
+        const {
+            button,
+            setCount,
+            setOperatorPressed,
+            setIsFirstOperator,
+            setEqualPressed,
+            setLastOperator,
+        } = props
+
         if (prev.toString().includes('.') && button === '.') {
             return prev.toString()
         }
 
-        if ((Number(button) >= '0' && Number(button) <= '9') || button === '.') {
+        if ((Number(button) >= 0 && Number(button) <= 9) || button === '.') {
             if (prev.toString().length >= 9) return prev.toString()
 
             if ((prev === '0' || prev === '-0') && button === '0') return prev.toString()

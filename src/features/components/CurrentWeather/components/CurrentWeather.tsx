@@ -1,12 +1,12 @@
 import './CurrentWeather.scss'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from 'shared/lib'
 import { useEffect } from 'react'
+import { WeatherInCity } from 'entities/Weather'
 import { useGetCurrentWeatherQuery } from '../api/weatherApi.js'
 import { useCurrentPosition } from '../lib/helpers/useCurrentPosition'
-import { WeatherInCity } from '../../../../entities/Weather'
 
 export const CurrentWeather = () => {
-    const location = useSelector((state) => state.location.location)
+    const location = useAppSelector((state) => state.location.location)
 
     const position = useCurrentPosition()
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { CurrentWeather, SearchCity } from '../../../features/components'
+import { CurrentWeather, SearchCity } from 'features/components'
 import './Weather.scss'
 
 export const Weather = () => {
