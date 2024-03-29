@@ -1,5 +1,5 @@
 export { NotesSection } from './NotesSection/components/NotesSection.tsx'
-export { CustomNavbar } from './CustomNavbar/components/CustomNavbar.jsx'
+export { CustomNavbar } from './CustomNavbar/components/CustomNavbar.tsx'
 export { Calculator } from './Calculator/components/Calculator.tsx'
 export { Weather } from './Weather/components/Weather.tsx'
 export { WelcomeSection } from './WelcomeSection/components/WelcomeSection.tsx'

@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from './NotFoundPage.module.scss'
+import './NotFoundPage.scss'
 
 export const NotFoundPage = () => {
     return (
-        <div className={classes.page}>
+        <div className='nf-page'>
             <h1>404 error...</h1>
         </div>
     )

@@ -4,7 +4,7 @@ import './CalculatorPage.scss'
 
 export const CalculatorPage = () => {
     return (
-        <div className='page'>
+        <div className='calc-page'>
             <Calculator />
         </div>
     )

@@ -1,4 +1,4 @@
-import { rtkApi } from '../../../../shared/api'
+import { rtkApi } from 'shared/api'
 
 const token = '162de0d170da426d3fdfd549f662f48140494359'
 const secret = 'd62c45c8dd83cf556622a56245082c630165fe33'

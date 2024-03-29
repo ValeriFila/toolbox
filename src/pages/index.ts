@@ -1,5 +1,5 @@
 export { CalculatorPage } from './CalculatorPage/CalculatorPage.tsx'
 export { NotesPage } from './NotesPage/NotesPage.tsx'
-export { NotFoundPage } from './NotFoundPage/NotFoundPage.jsx'
-export { WeatherPage } from './WeatherPage/WeatherPage.jsx'
+export { NotFoundPage } from './NotFoundPage/NotFoundPage.tsx'
+export { WeatherPage } from './WeatherPage/WeatherPage.tsx'
 export { WelcomePage } from './WelcomePage/WelcomePage.tsx'

@@ -1,4 +1,4 @@
-import { rtkApi } from '../../../../shared/api'
+import { rtkApi } from 'shared/api'
 
 const API_KEY = 'c44bc4e816b941dfa6462259240303'
 

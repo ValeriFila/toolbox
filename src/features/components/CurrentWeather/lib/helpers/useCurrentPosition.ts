@@ -1,9 +1,16 @@
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from 'shared/lib'
 import { useCallback, useMemo } from 'react'
 import { setLocation } from '../../../../model/store/locationSlice'
 
+interface UseCurrentPositionProps {
+    coords: {
+        latitude: number
+        longitude: number
+    }
+}
+
 export const useCurrentPosition = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const options = useMemo(() => {
         return {
             enableHighAccuracy: true,
@@ -11,16 +18,20 @@ export const useCurrentPosition = () => {
             maximumAge: 0,
         }
     }, [])
-    const success = useCallback((position) => {
+    const success = useCallback((position: UseCurrentPositionProps) => {
         if (navigator.geolocation) {
             dispatch(setLocation(`${position.coords.latitude.toString()},${position.coords.longitude.toString()}`))
         }
     }, [dispatch])
-    const error = (err) => {
-        throw new Error(err)
+    const error = () => {
+        throw new Error('Не получается определить вашу геолокацию :(')
     }
 
     return useCallback(() => {
-        navigator.geolocation.getCurrentPosition(success, error, options)
+        try {
+            navigator.geolocation.getCurrentPosition(success, error, options)
+        } catch (e) {
+            console.log(e)
+        }
     }, [options, success])
 }

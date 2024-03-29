@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { useAppDispatch, useDebounce } from 'shared/lib'
 import { SearchingCityBlock } from 'entities/Weather'
-import { useFetchCityMutation } from '../api/cityApi'
+import { useFetchCityMutation } from 'features/components/SearchCity/api/cityApi.ts'
 import { setLocation } from '../../../model/store/locationSlice'
 import './SearchCity.scss'
 
@@ -13,7 +13,7 @@ interface QueriedCities {
 
 export const SearchCity = () => {
     const dispatch = useAppDispatch()
-    const [queryRes, setQueryRes] = useState([])
+    const [queryRes, setQueryRes] = useState<QueriedCities[]>([])
     const ref = useRef<HTMLInputElement>(null)
     const [fetchCity, result] = useFetchCityMutation()
 
@@ -40,7 +40,7 @@ export const SearchCity = () => {
     }, [dispatch])
 
     const createdCitiesList = useMemo(() => {
-        if (queryRes.length === 0) {
+        if (!queryRes) {
             return null
         }
         const citiesArray: string[] = queryRes.reduce((accum: string[], city: QueriedCities) => {
