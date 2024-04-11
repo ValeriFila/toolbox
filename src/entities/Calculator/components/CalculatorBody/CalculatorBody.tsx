@@ -36,27 +36,27 @@ export const CalculatorBody = (props: CalculatorBodyProps) => {
     } = props
 
     return (
-        <div className='calculator__body'>
-            <div className='calculator__body__calculator'>
+        <div className='calculator-body'>
+            <div className='calculator-body__calculator'>
                 {buttons.map((button) => (
                     <SquareButton
                         key={button}
                         theme={button === '0' ? 'calc-btn--big' : 'calc-btn'}
                         onClick={() => onClickButton(button)}
                     >
-                        <p className='calculator__body__calculator__text'>{button}</p>
+                        <p className='calculator-body__calculator__text'>{button}</p>
                     </SquareButton>
                 ))}
             </div>
             {result.toString().length > 9 ? (
                 <p
-                    className='calculator__body__calculator__count'
+                    className='calculator-body__calculator__count'
                 >
                     {result.toExponential(3)}
                 </p>
             ) : (
                 <p
-                    className='calculator__body__calculator__count'
+                    className='calculator-body__calculator__count'
                 >
                     {result.toString()}
                 </p>
